@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="40" height="20" tilewidth="16" tileheight="16">
+ <tileset firstgid="1" name="map" tilewidth="16" tileheight="16">
+  <image source="../sprites/map.png" width="64" height="32"/>
+ </tileset>
+ <tileset firstgid="9" name="hero" tilewidth="16" tileheight="32">
+  <image source="../sprites/hero.png" width="16" height="32"/>
+  <tile id="0">
+   <properties>
+    <property name="hero" value=""/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer name="background" width="40" height="20">
+  <data encoding="base64" compression="zlib">
+   eJztw8ENACAIBLBD3H9mJ/BJ+LRJK0np0qOLW/2+qkMflJcImQ==
+  </data>
+ </layer>
+ <layer name="ground" width="40" height="20">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUEANYgZiNSMwxQG4kByD7ayi5ezADUJiOhiV1ACgs2YnA9A7v0TgmDYyWM7gBLI2zIdFDtT6hF4CF2WjY4AbY0hVy+mLHIU9suCKXzfjsYGPAtBNkPgBLXQIA
+  </data>
+ </layer>
+ <objectgroup name="objects" width="40" height="20">
+  <object gid="9" x="51" y="300"/>
+ </objectgroup>
+</map>
