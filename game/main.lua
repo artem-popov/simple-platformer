@@ -10,7 +10,7 @@ ML.path = "levels/"
 local tile_size = 16
 local tiles_h = 20
 local tiles_w = 40
-local zoom = 2
+local zoom = 4
 	
 local camera_dx = love.graphics.getWidth() / ( zoom * 2 )
 local camera_dy = tile_size * tiles_h - love.graphics.getHeight() / ( zoom * 2 )
@@ -21,46 +21,40 @@ camera.speed = 128;
 local hero
 local collider
 local ground_tiles
-local hero_tile 
 
 function love.load()
 	-- load level
 	level = ML.load("level1.tmx")
 	-- set collisions callbacks
-	collider = HC(100, on_collide)
+	collider = HC(50, on_collide)
 	-- set ground tiles
     ground_tiles = get_ground_tiles( level )
 	-- set hero obj 
-	hero_tile = get_hero_tile( level )
-	
-	init_hero( 16, 16, tile_size, tile_size * 2 )
+	hero = get_hero_tile( level )
 end
 
 function love.update( dt )
 	camera:handle_camera( dt )
 	
+	handle_hero( dt )
 	update_hero( dt )
 	
 	collider:update( dt )
-	
 end
 
 function love.draw()
 	camera:attach()
 	
 	level:draw()
-
+	--draw_hero()
+	hero:draw("fill")
+	
 	camera:detach()
 end
 
 function draw_hero()
 	local hx, hy = hero:center()
-	level.tiles[hero_tile.id]:draw( hx, hy )
-end
-
-function init_hero( x, y, w, h )
-	hero = collider:addRectangle( x ,y, w, h )
-    hero.speed = 200
+	level.tiles[hero.id]:draw( hx - tile_size / 2, hy - tile_size * 2 )
 end
 
 function update_hero( dt )
@@ -72,23 +66,42 @@ function get_ground_tiles( level )
 	local collidable_tiles = {}
 	
 	for i, j, tile in level("ground"):iterate() do
-		local ctile
-		ctile = collider:addRectangle(i*tile_size,j*tile_size,tile_size,tile_size)
-		ctile.type = "tile"
-		collider:addToGroup("tiles", ctile)
-		collider:setPassive(ctile)
-		table.insert(collidable_tiles, ctile)
+		if tile.properties.ground then
+			local ctile
+			ctile = collider:addRectangle(i*tile_size,j*tile_size,tile_size,tile_size - 10)
+			ctile.type = "tile"
+			collider:addToGroup("tiles", ctile)
+			collider:setPassive(ctile)
+			table.insert(collidable_tiles, ctile)
+		end
 	end
 
     return collidable_tiles
 end
 
 function get_hero_tile( level )
-	for i, obj in pairs( level("objects").objects ) do
-		if obj.hero then 
-			return obj
+	for i, j, tile in level("objects"):iterate() do
+		if tile.properties.hero then
+			local hero = collider:addRectangle(i*tile_size,j*tile_size,tile_size,2*tile_size - 4)
+			hero.id = tile.id
+			hero.speed = 100
+			return hero
 		end
 	end
+end
+
+function handle_hero( dt )
+
+    if love.keyboard.isDown("left") then
+        hero:move(-hero.speed*dt, 0)
+    end
+    if love.keyboard.isDown("right") then
+        hero:move(hero.speed*dt, 0)
+    end
+    if love.keyboard.isDown("up") then
+
+    end
+
 end
 
 function on_collide(dt, shape_a, shape_b, mtv_x, mtv_y)

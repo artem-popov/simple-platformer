@@ -2,14 +2,37 @@
 <map version="1.0" orientation="orthogonal" width="40" height="20" tilewidth="16" tileheight="16">
  <tileset firstgid="1" name="map" tilewidth="16" tileheight="16">
   <image source="../sprites/map.png" width="64" height="32"/>
+  <tile id="4">
+   <properties>
+    <property name="ground" value=""/>
+   </properties>
+  </tile>
+  <tile id="5">
+   <properties>
+    <property name="ground" value=""/>
+   </properties>
+  </tile>
+  <tile id="6">
+   <properties>
+    <property name="ground" value=""/>
+   </properties>
+  </tile>
+  <tile id="7">
+   <properties>
+    <property name="ground" value=""/>
+   </properties>
+  </tile>
  </tileset>
  <tileset firstgid="9" name="hero" tilewidth="16" tileheight="32">
   <image source="../sprites/hero.png" width="16" height="32"/>
   <tile id="0">
    <properties>
-    <property name="hero" value=""/>
+    <property name="hero" value="true"/>
    </properties>
   </tile>
+ </tileset>
+ <tileset firstgid="10" name="objects" tilewidth="16" tileheight="16">
+  <image source="../sprites/objects.png" width="32" height="32"/>
  </tileset>
  <layer name="background" width="40" height="20">
   <data encoding="base64" compression="zlib">
@@ -18,10 +41,12 @@
  </layer>
  <layer name="ground" width="40" height="20">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUEANYgZiNSMwxQG4kByD7ayi5ezADUJiOhiV1ACgs2YnA9A7v0TgmDYyWM7gBLI2zIdFDtT6hF4CF2WjY4AbY0hVy+mLHIU9suCKXzfjsYGPAtBNkPgBLXQIA
+   eJxjYBgFo2AUEANYgZiNSMwxQG4kByD7ayi5ezADUJiOhiV1ACgs2YnA9A7v0TgmDYyWM7gBLI2zIdGDoT5hYRiYvEUMgKWnwei2wQKwpSvk9MWOQ57YOEcum/HZwcaAaSfIfAB2YQIS
   </data>
  </layer>
- <objectgroup name="objects" width="40" height="20">
-  <object gid="9" x="51" y="300"/>
- </objectgroup>
+ <layer name="objects" width="40" height="20">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIJRMApwAy4amMlJAzNHwSjABXgI0CMdcA+0A4Y54KVAL740i4s9FAAAgvMAmA==
+  </data>
+ </layer>
 </map>
