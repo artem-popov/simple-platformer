@@ -1,7 +1,7 @@
 function love.conf(t)
     t.title = "Simple platformer"        -- «аголовок окна игры (текст)
     t.author = "Zuick"        -- автор игры (текст)
-    t.screen.width = 640        -- ширина окна (число)
-    t.screen.height = 480       -- высота окна (число)
+    t.screen.width = 800        -- ширина окна (число)
+    t.screen.height = 600       -- высота окна (число)
     t.screen.fullscreen = false -- включить полноэкранный режим (логическое)
 end
