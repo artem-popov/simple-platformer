@@ -1,0 +1,5 @@
+- tiles types: sky, blocks
+- hero : left, right, jump
+- objects : box( can be moved ), coins, bad zone, end point -> next level
+- screen : camera.
+- game : levels, restart.
