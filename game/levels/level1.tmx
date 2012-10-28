@@ -34,6 +34,14 @@
  <tileset firstgid="10" name="objects" tilewidth="16" tileheight="16">
   <image source="../sprites/objects.png" width="32" height="32"/>
  </tileset>
+ <tileset firstgid="14" name="hero_16" tilewidth="16" tileheight="16">
+  <image source="../sprites/hero_16.png" width="16" height="16"/>
+  <tile id="0">
+   <properties>
+    <property name="hero" value=""/>
+   </properties>
+  </tile>
+ </tileset>
  <layer name="background" width="40" height="20">
   <data encoding="base64" compression="zlib">
    eJztw8ENACAIBLBD3H9mJ/BJ+LRJK0np0qOLW/2+qkMflJcImQ==
@@ -41,12 +49,12 @@
  </layer>
  <layer name="ground" width="40" height="20">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUEANYgZiNSMwxQG4kByD7ayi5ezADUJiOhiV1ACgs2YnA9A7v0TgmDYyWM7gBLI2zIdGDoT5hYRiYvEUMgKWnwei2wQKwpSvk9MWOQ57YOEcum/HZwcaAaSfIfAB2YQIS
+   eJzt0iEOADAIQ9Gasd3/xBsCx3QR/yUEZEMqAQAAwGG92e4QH5nruEM08mehmdmmqF5Fs+t29u4Cl9wAbw==
   </data>
  </layer>
  <layer name="objects" width="40" height="20">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUjIJRMApwAy4amMlJAzNHwSjABXgI0CMdcA+0A4Y54KVAL740i4s9FAAAgvMAmA==
+   eJxjYBgFo2AUjIJRMApGwWAEXAPtgFFAMeCD0twD6griAM9AO2AUjBgAAKcoADA=
   </data>
  </layer>
 </map>
