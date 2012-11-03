@@ -6,9 +6,9 @@ function handle_hero( hero, dt )
         hero:move( 100 * dt, 0)
     end
     if love.keyboard.isDown(" ") then
-		if hero.on_ground == true then
-			hero:move( 0, -200 * dt) 
-			--hero.on_ground = false
+		if hero.on_ground then
+			hero.on_ground = false --begin falling
+			hero.on_jump = true
 		end
     end
 end

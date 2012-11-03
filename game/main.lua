@@ -44,7 +44,9 @@ function love.draw()
 	draw_objects( level, active_objects )
 	
 	camera.fn:detach()
-	
-	if hero.on_ground == true then love.graphics.print( "on ground", 10,10) end
-	love.graphics.print( "hero", 10,20)
+
+	if hero.on_ground == true then love.graphics.print( "on ground", 10,10)
+	elseif hero.on_jump == true then love.graphics.print( "on jump", 10,10)
+	elseif hero.on_fall == true then love.graphics.print( "on fall", 10,10)
+	end
 end

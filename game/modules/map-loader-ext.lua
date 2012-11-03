@@ -4,7 +4,10 @@ function get_objects_from_level( level, layer_name, collider, is_active, tsize )
 	for i, j, tile in level( layer_name ):iterate() do
 		local ctile = collider:addRectangle( i*tsize, j*tsize, tsize, tsize )
 		if tile.properties.hero then 
-			ctile.hero = true 
+			ctile.hero = true
+			ctile.on_jump = false
+			ctile.on_fall = true
+			ctile.jtimer = 0 -- jump timer
 		end
 		ctile.id = tile.id
 		ctile.type = layer_name
