@@ -1,4 +1,6 @@
-function get_objects_from_level( level, layer_name, collider, is_active, tsize )
+map_loader_module = require "modules/map-loader/Loader"
+
+function map_loader_module.get_objects_from_level( level, layer_name, collider, is_active, tsize )
 	local objects = {}
 	
 	for i, j, tile in level( layer_name ):iterate() do
@@ -20,16 +22,18 @@ function get_objects_from_level( level, layer_name, collider, is_active, tsize )
     return objects
 end
 
-function draw_layer( level, layer_name )
+function map_loader_module.draw_layer( level, layer_name )
 	for i, j, tile in level( layer_name ):iterate() do
 		tile:draw( i * tile.width, j * tile.width ) -- hero not correctly draw
 	end
 end
 
-function draw_objects( level, objects )
+function map_loader_module.draw_objects( level, objects )
 	for i, obj in pairs( objects ) do
 		x, y = obj:bbox()
 		level.tiles[obj.id]:draw( x, y )
 		--obj:draw()
 	end
 end
+
+return map_loader_module
