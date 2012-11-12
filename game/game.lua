@@ -3,6 +3,7 @@ local map_module = require "modules/map-loader-ext"
 local camera_module = require "modules/camera-ext"
 local collider_module = require "modules/hardon-collider"
 local physics = require "modules/physics"
+local logger = require "modules/logger" 
 
 -- setup modules
 map_module.path = "levels/"
@@ -26,6 +27,8 @@ function game:draw()
     map_module.draw_objects( level, game_objects )
 
     camera.fn:detach()
+
+    logger.draw()
 end
 
 function game:update( dt )
@@ -37,4 +40,5 @@ function game:keyreleased(key, code)
     if key == 'escape' then
         love.event.quit()
     end
+    logger.log(key)
 end
