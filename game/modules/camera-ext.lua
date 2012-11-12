@@ -5,7 +5,7 @@ Adds movement functions amd checking restrictions
 Copyright (c) 2012 Khakimov Ruslan
 ]]--
 local _PATH = (...):match('^(.*[%./])[^%.%/]+$') or ''
-local camera_module = require (_PATH .. "/hamp/camera")
+local camera_module = require (_PATH .. "/hump/camera")
 
 local camera_ext = {}
 
