@@ -53,19 +53,19 @@
    </properties>
   </tile>
  </tileset>
- <layer name="background" width="15" height="10" visible="0">
+ <layer name="background" width="15" height="10">
   <data encoding="base64" compression="zlib">
    eJxjZmBgYKYDZqGTPQNl3yhGxQAYwgHF
   </data>
  </layer>
  <layer name="ground" width="15" height="10">
   <data encoding="base64" compression="zlib">
-   eJxjYBgYwAjFvEhsGCYW8FJg/1DTy02CXh4kNnrYgjATFoxNHSUYAIY4AI8=
+   eJxjYBgYwAjFvEhsGCYW8FJg/0jRix62uMIXmzpKMAB04ABu
   </data>
  </layer>
  <layer name="objects" width="15" height="10">
   <data encoding="base64" compression="zlib">
-   eJxjYBicgGugHUBjwDrQDqAxAAAYOAAQ
+   eJxjYKAu4Bpk5gxWwAqlB8KfjFgwtQEANsQAKQ==
   </data>
  </layer>
 </map>
