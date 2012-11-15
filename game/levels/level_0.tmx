@@ -53,7 +53,7 @@
    </properties>
   </tile>
  </tileset>
- <layer name="background" width="15" height="10">
+ <layer name="background" width="15" height="10" visible="0">
   <data encoding="base64" compression="zlib">
    eJxjZmBgYKYDZqGTPQNl3yhGxQAYwgHF
   </data>
@@ -65,7 +65,7 @@
  </layer>
  <layer name="objects" width="15" height="10">
   <data encoding="base64" compression="zlib">
-   eJxjYKAu4Bpk5hACrHSyZ6QBAC7gABo=
+   eJxjYBicgGugHUBjwDrQDqAxAAAYOAAQ
   </data>
  </layer>
 </map>
