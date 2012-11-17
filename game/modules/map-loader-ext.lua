@@ -7,13 +7,13 @@ function ml.get_objects_from_level( level, physics )
         for i, j, tile in layer:iterate() do
             local x, y, w, h = i*level.tileWidth + level.tileWidth / 2, j*level.tileWidth + level.tileWidth / 2, level.tileWidth, level.tileWidth
             if tile.properties.hero then 
-                local object = physics:create_box( x, y, w/2, h, "dynamic" )
+                local object = physics:create_hero( x, y, w/2, h, "dynamic" )
                 object.id = tile.id
                 object.name = "hero"
                 object = ml.set_hero( object )
                 table.insert( objects, object )
             elseif tile.properties.crate then
-                local object = physics:create_box( x, y, w, h, "dynamic" )
+                local object = physics:create_circle( x, y, w /2, "dynamic" )
                 object.id = tile.id
                 object.name = "crate"
                 table.insert( objects, object )
@@ -30,11 +30,9 @@ end
 
 function ml.draw_objects( level, objects )
 	for i, obj in pairs( objects ) do
-		local x, y = obj.body:getWorldPoints( obj.shape:getPoints() )
-		if obj.name == "hero" then level.tiles[obj.id]:draw( x - 4, y )
-		else level.tiles[obj.id]:draw( x, y ) end
+        local x, y = obj:get_xy()
         
-        --love.graphics.polygon("fill", obj.body:getWorldPoints( obj.shape:getPoints()))
+        level.tiles[obj.id]:draw( x , y )
 	end
 end
 
