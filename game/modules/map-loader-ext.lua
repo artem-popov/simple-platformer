@@ -7,20 +7,17 @@ function ml.get_objects_from_level( level, physics )
         for i, j, tile in layer:iterate() do
             local x, y, w, h = i*level.tileWidth + level.tileWidth / 2, j*level.tileWidth + level.tileWidth / 2, level.tileWidth, level.tileWidth
             if tile.properties.hero then 
-                local object = physics:create_hero( x, y, w/2, h, "dynamic" )
+                local object = physics:create_hero( x, y, w/2, h, "dynamic", "hero" )
                 object.id = tile.id
-                object.name = "hero"
                 object = ml.set_hero( object )
                 table.insert( objects, object )
             elseif tile.properties.crate then
-                local object = physics:create_circle( x, y, w /2, "dynamic" )
+                local object = physics:create_circle( x, y, w /2, "dynamic", "crate" )
                 object.id = tile.id
-                object.name = "crate"
                 table.insert( objects, object )
             elseif tile.properties.ground or tile.properties.spike then
-                local object = physics:create_box( x, y, w + 1, h, "static" )
+                local object = physics:create_box( x, y, w + 1, h, "static", "ground" )
                 object.id = tile.id
-                object.name = "ground"
                 table.insert( objects, object )
             end
         end
@@ -50,18 +47,28 @@ end
 
 function ml.set_hero( object )
     function object:handle_hero( dt )
-        if love.keyboard.isDown("right") then 
-            object.body:applyForce(100, 0)
+        local vx, vy = object.body:getLinearVelocity()
+        if love.keyboard.isDown("right") then
+            object.body:setLinearVelocity( 75, vy )
         end
         if love.keyboard.isDown("left") then
-            object.body:applyForce(-100, 0)
+            object.body:setLinearVelocity( -75, vy )
         end
         if love.keyboard.isDown(" ") then
-            object.body:applyForce(0, -300)
+            local data = object.fixture:getUserData()
+            if data.on_ground then
+                object.body:applyForce(0, -1000)
+                data.on_ground = false
+                object.fixture:setUserData( data )
+            end
         end
     end
     return object
 end 
+
+function check_hit( x, y )
+
+end
 
 function ml.inherit_dynamic( object, mass )
     object.dynamic = true

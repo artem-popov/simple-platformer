@@ -24,7 +24,6 @@ function game:draw()
     camera.fn:attach()
 
     map_module.draw_layer( level("background") )
-    --map_module.draw_layer( level("ground") )
     map_module.draw_objects( level, game_objects )
 
     camera.fn:detach()
