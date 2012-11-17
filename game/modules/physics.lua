@@ -70,6 +70,7 @@ function physics:create_hero( x, y, w, h, type, name )
 
 	return box
 end
+
 function physics.beginContact( a_fixture, b_fixture, coll)
     a = a_fixture:getUserData()
     b = b_fixture:getUserData()
@@ -86,6 +87,17 @@ function physics.beginContact( a_fixture, b_fixture, coll)
 end
 
 function physics.endContact()
+
+end
+
+function physics:set_world_bounds( level )
+    -- w, h in pixels
+    local level_w, level_h = level.tileWidth * level.width, level.tileHeight * level.height
+    local tile_w = level.tileWidth
+    -- left
+    physics:create_box( - tile_w / 2, level_h / 2, tile_w, level_h, "static", "bound" )
+    -- right
+    physics:create_box( level_w + tile_w / 2, level_h / 2, tile_w, level_h, "static", "bound" )
 
 end
 return physics

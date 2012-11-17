@@ -16,7 +16,7 @@ function ml.get_objects_from_level( level, physics )
                 object.id = tile.id
                 table.insert( objects, object )
             elseif tile.properties.ground or tile.properties.spike then
-                local object = physics:create_box( x, y, w, h, "static", "ground" )
+                local object = physics:create_box( x, y, w, h-1, "static", "ground" )
                 object.id = tile.id
                 table.insert( objects, object )
             end

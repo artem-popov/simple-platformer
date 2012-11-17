@@ -60,7 +60,7 @@
  </layer>
  <layer name="ground" width="15" height="10">
   <data encoding="base64" compression="zlib">
-   eJxjYBgYwAjFvEhsGCYW8FJg/0jRix629MIAdqwAcw==
+   eJxjYBg4wAjEvFAaGROjjwGql1xAjl6Y+wbKXmLDh1oA3V5SMABtXABd
   </data>
  </layer>
  <layer name="objects" width="15" height="10" visible="0">

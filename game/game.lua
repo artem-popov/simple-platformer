@@ -12,12 +12,15 @@ function game:init()
 	level = map_module.load("level_0.tmx")
     -- init physics. set gravity
     physics:init( 500 )
+    -- set bounds
+    physics:set_world_bounds( level )
     -- load objects
     game_objects = map_module.get_objects_from_level( level, physics )
     -- get hero
     hero = map_module.get_by_name( game_objects, "hero" )
+    
     -- create camera ( zoom, speed, tsize, tw, th )
-	camera = camera_module( 4, 200, 16, 15, 10 )
+	camera = camera_module( 2, 200, level.tileWidth, level.width, level.height )
 end
 
 function game:draw()
