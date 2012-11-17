@@ -12,7 +12,7 @@ function physics:create_box( x, y, w, h, type, name )
 	box.body = love.physics.newBody( self.world, x, y, type )
 	box.shape = global.love.physics.newRectangleShape( w, h )
 	box.fixture = global.love.physics.newFixture( box.body, box.shape )
-	box.fixture:setRestitution( 0.2 )
+	box.fixture:setRestitution( 0 )
     box.fixture:setUserData( { name = name } )
     box.body:setFixedRotation( true )
 
@@ -23,19 +23,22 @@ function physics:create_box( x, y, w, h, type, name )
 	return box
 end
 
-function physics:create_circle( x, y, r, type, name )
+function physics:create_crate( x, y, w, h, type, name )
 	local box = {}
     box.name = name
 	box.body = love.physics.newBody( self.world, x, y, type )
-	box.shape = global.love.physics.newCircleShape( r )
-	box.fixture = global.love.physics.newFixture( box.body, box.shape )
-	box.fixture:setRestitution( 0.2 )
+	box.shape_box = global.love.physics.newRectangleShape( 0, 0, w, h / 2, 0 )
+	box.shape_circle = global.love.physics.newCircleShape( w / 2 )
+	box.fixture = global.love.physics.newFixture( box.body, box.shape_circle )
+	box.fixture_box = global.love.physics.newFixture( box.body, box.shape_box )
+	box.fixture:setRestitution( 0.3 )
     box.fixture:setFriction( 1 )
+    box.fixture_box:setUserData( { name = "crate_roof" } )
     box.fixture:setUserData( { name = name } )
     box.body:setFixedRotation( true )
 
     function box:get_xy()
-        return box.body:getX() - box.shape:getRadius(), box.body:getY() - box.shape:getRadius()
+        return box.body:getX() - box.shape_circle:getRadius(), box.body:getY() - box.shape_circle:getRadius()
     end
 
 	return box
@@ -48,13 +51,13 @@ function physics:create_hero( x, y, w, h, type, name )
 	local box = {}
     box.name = name
 	box.body = love.physics.newBody( self.world, x, y, type )
-	box.shape_box = global.love.physics.newRectangleShape( w, h * 0.7 )
+	box.shape_box = global.love.physics.newRectangleShape( w, h * 0.75 )
 	box.shape_circle = global.love.physics.newCircleShape( 0, h / 2, w / 2 - 2 )
 
 	box.fixture_box = global.love.physics.newFixture( box.body, box.shape_box )
 	box.fixture = global.love.physics.newFixture( box.body, box.shape_circle )
 
-	box.fixture_box:setRestitution( 0.2 )
+	box.fixture_box:setRestitution( 0 )
 	box.fixture_box:setUserData( { name = "hero_body" } )
 	box.fixture:setRestitution( 0 )
     box.fixture:setFriction( 1 )

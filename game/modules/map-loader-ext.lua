@@ -9,14 +9,14 @@ function ml.get_objects_from_level( level, physics )
             if tile.properties.hero then 
                 local object = physics:create_hero( x, y, w/2, h, "dynamic", "hero" )
                 object.id = tile.id
-                object = ml.set_hero( object )
+                object = ml.set_handling( object )
                 table.insert( objects, object )
             elseif tile.properties.crate then
-                local object = physics:create_circle( x, y, w /2, "dynamic", "crate" )
+                local object = physics:create_crate( x, y, w, h, "dynamic", "crate" )
                 object.id = tile.id
                 table.insert( objects, object )
             elseif tile.properties.ground or tile.properties.spike then
-                local object = physics:create_box( x, y, w + 1, h, "static", "ground" )
+                local object = physics:create_box( x, y, w, h, "static", "ground" )
                 object.id = tile.id
                 table.insert( objects, object )
             end
@@ -45,22 +45,14 @@ function ml.get_by_name( objects, name)
     end
 end
 
-function ml.set_hero( object )
-    function object:handle_hero( dt )
+function ml.set_handling( object )
+    function object:handle( dt )
         local vx, vy = object.body:getLinearVelocity()
         if love.keyboard.isDown("right") then
             object.body:setLinearVelocity( 75, vy )
         end
         if love.keyboard.isDown("left") then
             object.body:setLinearVelocity( -75, vy )
-        end
-        if love.keyboard.isDown(" ") then
-            local data = object.fixture:getUserData()
-            if data.on_ground then
-                object.body:applyForce(0, -1000)
-                data.on_ground = false
-                object.fixture:setUserData( data )
-            end
         end
     end
     return object

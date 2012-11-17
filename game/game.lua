@@ -32,13 +32,24 @@ function game:draw()
 end
 
 function game:update( dt )
-    hero:handle_hero( dt )
+    hero:handle( dt )
     camera:handle_camera( dt )
     physics.world:update( dt )
 end
 
-function game:keyreleased(key, code)
+function game:keyreleased( key, code )
     if key == 'escape' then
         love.event.quit()
+    end
+end
+
+function game:keypressed( key, code )
+    if key == " " then
+        local data = hero.fixture:getUserData()
+        if data.on_ground then
+            hero.body:applyForce(0, -1000)
+            data.on_ground = false
+            hero.fixture:setUserData( data )
+        end
     end
 end
