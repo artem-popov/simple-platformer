@@ -20,7 +20,7 @@ function game:init()
     hero = map_module.get_by_name( game_objects, "hero" )
     
     -- create camera ( zoom, speed, tsize, tw, th )
-	camera = camera_module( 2, 200, level.tileWidth, level.width, level.height )
+	camera = camera_module( love.graphics.getHeight() / ( level.tileWidth * level.height ), 200, level.tileWidth, level.width, level.height )
 end
 
 function game:draw()
@@ -50,7 +50,7 @@ function game:keypressed( key, code )
     if key == " " then
         local data = hero.fixture:getUserData()
         if data.on_ground then
-            hero.body:applyForce(0, -1000)
+            hero.body:applyForce(0, -1500)
             data.on_ground = false
             hero.fixture:setUserData( data )
         end
