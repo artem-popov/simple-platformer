@@ -3,6 +3,7 @@ local global = _G
 
 function ml.get_objects_from_level( level, physics )
 	local objects = {}
+    local possible_widetile = { x = 0, y = 0, w = 0, h = 0, is_ground = false } --save data about possible tile that we can do if glue tiles
 	for i, layer in pairs( level.layers ) do
         for i, j, tile in layer:iterate() do
             local x, y, w, h = i*level.tileWidth + level.tileWidth / 2, j*level.tileWidth + level.tileWidth / 2, level.tileWidth, level.tileWidth
@@ -16,6 +17,7 @@ function ml.get_objects_from_level( level, physics )
                 object.id = tile.id
                 table.insert( objects, object )
             elseif tile.properties.ground or tile.properties.spike then
+                
                 local object = physics:create_box( x, y, w, h-1, "static", "ground" )
                 object.id = tile.id
                 table.insert( objects, object )
@@ -29,7 +31,12 @@ function ml.draw_objects( level, objects )
 	for i, obj in pairs( objects ) do
         local x, y = obj:get_xy()
         
-        level.tiles[obj.id]:draw( x , y )
+        --level.tiles[obj.id]:draw( x , y )
+        local r, g, b, a = love.graphics.getColor()
+        love.graphics.setColor( 0, 255, 0, 255 )
+        local x1, y1, x2, y2 = obj.fixture:getBoundingBox()
+        love.graphics.rectangle("line", x1, y1, x2 - x1, y2 - y1 )
+        love.graphics.setColor( r, g, b, a )
 	end
 end
 

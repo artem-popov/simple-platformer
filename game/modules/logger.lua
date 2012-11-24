@@ -13,7 +13,7 @@ function logger.log( message )
 end
 
 function logger.draw()
-    r, g, b, a = love.graphics.getColor()
+    local r, g, b, a = love.graphics.getColor()
     love.graphics.setColor( 0, 100, 0, 255 )
     for i, m in pairs( logger.messages ) do
         love.graphics.print( m, 10, i * 15 )
