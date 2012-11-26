@@ -43,9 +43,6 @@ function physics:create_crate( x, y, w, h, type, name )
 	return box
 end
 
---[[ makes hero shape
-    contains rectangle and circle shapes
-]]--
 function physics:create_hero( x, y, w, h, type, name )
 	local box = {}
     box.name = name

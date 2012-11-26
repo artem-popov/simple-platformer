@@ -15,7 +15,8 @@ function game:init()
     -- set bounds
     physics:set_world_bounds( level )
     -- load objects
-    game_objects = map_module.get_objects_from_level( level, physics )
+    game_objects = map_module.get_objects_glued( level("ground"), physics )
+    game_objects = map_module.join_tables( game_objects, map_module.get_objects( level("objects"), physics ) )
     -- get hero
     hero = map_module.get_by_name( game_objects, "hero" )
     

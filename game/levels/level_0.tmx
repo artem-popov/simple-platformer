@@ -60,12 +60,12 @@
  </layer>
  <layer name="ground" width="15" height="10">
   <data encoding="base64" compression="zlib">
-   eJxjYBg4wAjEvFAaGROjjwGql1xAjl6Y+wbKXmLDh1oA3V5SMABtXABd
+   eJxjYBhcgJEAJqSXHDlq6MXlRlraS665uNSj+4FQXODDAB/0ACg=
   </data>
  </layer>
- <layer name="objects" width="15" height="10" visible="0">
+ <layer name="objects" width="15" height="10">
   <data encoding="base64" compression="zlib">
-   eJxjYKAeYAViLiqZRS1zBjsYrv4EADrUACQ=
+   eJxjYBgFgw1w4RBnJSA/mAAAE8QAGg==
   </data>
  </layer>
 </map>
