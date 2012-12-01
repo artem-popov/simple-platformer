@@ -49,11 +49,6 @@ end
 
 function game:keypressed( key, code )
     if key == " " then
-        local data = hero.fixture:getUserData()
-        if data.on_ground then
-            hero.body:applyForce(0, -1500)
-            data.on_ground = false
-            hero.fixture:setUserData( data )
-        end
+        hero:jump()
     end
 end
