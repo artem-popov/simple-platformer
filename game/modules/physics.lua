@@ -67,8 +67,8 @@ function physics.beginContact( a_fixture, b_fixture, coll)
     a = a_fixture:getUserData()
     b = b_fixture:getUserData()
 
-    a.self:on_collide( b.self )
-    b.self:on_collide( a.self )
+    a:on_collide( b )
+    b:on_collide( a )
 
 end
 

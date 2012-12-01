@@ -21,7 +21,7 @@ function Physic_Object:construct( args, world )
 	self.fixture = love.physics.newFixture( self.body, self.shape )
 	self.fixture:setRestitution( self.restitution )
     self.fixture:setFriction( self.friction )
-    self.fixture:setUserData( { self = self } )
+    self.fixture:setUserData( self )
     self.body:setFixedRotation( self.fix_rotation )
 
     self:add_special_data()
