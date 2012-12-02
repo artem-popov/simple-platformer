@@ -66,6 +66,10 @@ function Hero_Object:set_tiles( tiles )
     Physic_Object.set_tiles( self, tiles )
 end
 
+function Hero_Object:get_object_at( x, y )
+    --look at World:queryBoundingBox
+end
+
 function Hero_Object:jump()
     if self.on_ground then
         self.body:applyForce(0, -1500)
