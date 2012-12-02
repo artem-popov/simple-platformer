@@ -30,6 +30,8 @@ function game:draw()
     map_module.draw_layer( level("background") )
     map_module.draw_objects( level, game_objects )
 
+    local x, y = hero:get_xy()
+    love.graphics.rectangle('line', x + 2, y + 15, 2, 1 )
     camera.fn:detach()
 
     logger.draw()
@@ -49,6 +51,14 @@ end
 
 function game:keypressed( key, code )
     if key == " " then
+        local x, y = hero:get_xy()
+        physics.world:queryBoundingBox( x + 2, y + 15, x + 4, y + 16, on_query )
         hero:jump()
     end
+end
+
+function on_query( fixt )
+    local a = fixt:getUserData()
+    logger.log( a.name )
+    return true
 end
