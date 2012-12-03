@@ -7,11 +7,6 @@
     <property name="ground" value=""/>
    </properties>
   </tile>
-  <tile id="1">
-   <properties>
-    <property name="spike" value=""/>
-   </properties>
-  </tile>
   <tile id="2">
    <properties>
     <property name="background" value=""/>
@@ -25,11 +20,6 @@
   <tile id="4">
    <properties>
     <property name="hero" value=""/>
-   </properties>
-  </tile>
-  <tile id="5">
-   <properties>
-    <property name="ground" value=""/>
    </properties>
   </tile>
   <tile id="6">
@@ -62,20 +52,30 @@
     <property name="ladder" value=""/>
    </properties>
   </tile>
+  <tile id="13">
+   <properties>
+    <property name="ground" value=""/>
+   </properties>
+  </tile>
+  <tile id="15">
+   <properties>
+    <property name="spike" value=""/>
+   </properties>
+  </tile>
  </tileset>
- <layer name="background" width="30" height="10">
+ <layer name="background" width="30" height="10" visible="0">
   <data encoding="base64" compression="zlib">
    eJxjZmBgYB4CmAWPHAcSHmh34nMzPj9QKyzQw4UW9g8GTEu/DKdwGm4YAKZAA6A=
   </data>
  </layer>
- <layer name="ground" width="30" height="10">
+ <layer name="ground" width="30" height="10" visible="0">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFxABGJBobHihArt3UcDsu/bjMJMYuct0E0sNGhj5yAcydbHS2F5c7SEmX+NTh4qNjtgHCAJGoAPA=
+   eJxjYBgFxABGJBobHihArt3UcDsu/bjMJMYuct0E0sNHhj5yAcydfHS2FwZg9uJKj/jCEZ86XHx0zDdAGAAMvwIU
   </data>
  </layer>
  <layer name="objects" width="30" height="10">
   <data encoding="base64" compression="zlib">
-   eJxjYBhagB0He6gCmB+4aGgHuWYPlfAdTO5kJVE9OxqNLE4NfzFhwfjU4eIPFgAA4PAAaw==
+   eJxjYBhagB0He6gCmB+4aGgHuWYPlfAdTO5kJVE9OxqNLI7LX6T4VwALxqcOF3+wAABBIwDw
   </data>
  </layer>
 </map>
