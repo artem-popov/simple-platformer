@@ -63,7 +63,7 @@ end
 function Hero_Object:set_box2d_objects( args, world )
 
     self.body = love.physics.newBody( world, args.x, args.y, self.type )
-	self.shape = love.physics.newRectangleShape( args.w, args.h - 2 )
+	self.shape = love.physics.newRectangleShape( args.w, args.h - 3 )
 
 	self.fixture = love.physics.newFixture( self.body, self.shape )
 	self.fixture:setRestitution( 0 )
@@ -84,7 +84,15 @@ function Hero_Object:add_special_data()
 end
 
 function Hero_Object:on_collide( object )
-
+    if object.name == 'gold' then
+        global.game_status.gold = game_status.gold + 1
+        object.body:destroy()
+        object.fixture:destroy()
+        object.destroyed = true
+    elseif object.name == 'spike' then
+        global.game_status.death = global.game_status.death + 1
+        self.body:applyForce( 0, -1500 )
+    end
 end
 
 function Hero_Object:get_xy() -- Physic_Object method
@@ -96,7 +104,7 @@ function Hero_Object:set_tiles( tiles ) -- Physic_Object method
 end
 
 function Hero_Object:jump()
-    self.body:applyForce(0, -1500)
+    self.body:applyForce( 0, -1500 )
 end
 
 function Hero_Object:what_under_me( physics )

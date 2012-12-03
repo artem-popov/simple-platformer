@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="20" height="15" tilewidth="16" tileheight="16">
+<map version="1.0" orientation="orthogonal" width="30" height="10" tilewidth="16" tileheight="16">
  <tileset firstgid="1" name="sprites-scetch" tilewidth="16" tileheight="16">
   <image source="../sprites/sprites-scetch.png" width="64" height="64"/>
   <tile id="0">
@@ -25,6 +25,16 @@
   <tile id="4">
    <properties>
     <property name="hero" value=""/>
+   </properties>
+  </tile>
+  <tile id="5">
+   <properties>
+    <property name="ground" value=""/>
+   </properties>
+  </tile>
+  <tile id="6">
+   <properties>
+    <property name="gold" value=""/>
    </properties>
   </tile>
   <tile id="8">
@@ -53,19 +63,19 @@
    </properties>
   </tile>
  </tileset>
- <layer name="background" width="20" height="15">
+ <layer name="background" width="30" height="10">
   <data encoding="base64" compression="zlib">
-   eJxjZmBgYB5AzDLA9o/6ZXD4ixw7hmt4j2LcGABXzAOK
+   eJxjZmBgYB4CmAWPHAcSHmh34nMzPj9QKyzQw4UW9g8GTEu/DKdwGm4YAKZAA6A=
   </data>
  </layer>
- <layer name="ground" width="20" height="15">
+ <layer name="ground" width="30" height="10">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFIMAIxUPFXGoDWrmRkQAmVj8yH59actxHqhw+9+PzHy3dR0qYkmMXKWbQEgMAR6wAOg==
+   eJxjYBgFxABGJBobHihArt3UcDsu/bjMJMYuct0E0sNGhj5yAcydbHS2F5c7SEmX+NTh4qNjtgHCAJGoAPA=
   </data>
  </layer>
- <layer name="objects" width="20" height="15">
+ <layer name="objects" width="30" height="10">
   <data encoding="base64" compression="zlib">
-   eJxjYBi6gGugHTBMwXAN1+HiL1L8wUqGnsEMAG2wADg=
+   eJxjYBhagB0He6gCmB+4aGgHuWYPlfAdTO5kJVE9OxqNLE4NfzFhwfjU4eIPFgAA4PAAaw==
   </data>
  </layer>
 </map>

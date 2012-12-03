@@ -1,6 +1,6 @@
 local global = _G
 
-local game_status = { gold = 0 }
+local game_status = { gold = 0, death = 0 }
 
 function game_status:show()
     local r, g, b, a = love.graphics.getColor()
@@ -10,6 +10,8 @@ function game_status:show()
     love.graphics.setColor( 200, 200, 200, 255 )
     love.graphics.print( 'GOLD:', 10, 8 )
     love.graphics.print( game_status.gold, 60, 8 )
+    love.graphics.print( 'DEATH:', 100, 8 )
+    love.graphics.print( game_status.death, 150, 8 )
     love.graphics.setColor( r, g, b, a )
 end
 

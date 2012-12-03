@@ -37,11 +37,38 @@ function physics:create_ground( x, y, w, h )
 	return object
 end
 
+function physics:create_spike( x, y, w, h )
+	local object = {}
+    setmetatable( object, { __index = Physic_Object } )
+    args = {}
+    args.name = 'spike'
+    args.type = 'static'
+    args.restitution = 0
+    args.x, args.y, args.w, args.h = x, y, w, h
+    
+    object:construct( args, self.world )
+
+	return object
+end
+
 function physics:create_crate( x, y, w, h )
 	local object = {}
     setmetatable( object, { __index = Physic_Object } )
     args = {}
     args.name = 'crate'
+    args.type = 'dynamic'
+    args.x, args.y, args.w, args.h = x, y, w, h
+    
+    object:construct( args, self.world )
+
+	return object
+end
+
+function physics:create_gold( x, y, w, h )
+	local object = {}
+    setmetatable( object, { __index = Physic_Object } )
+    args = {}
+    args.name = 'gold'
     args.type = 'dynamic'
     args.x, args.y, args.w, args.h = x, y, w, h
     
