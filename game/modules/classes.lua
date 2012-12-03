@@ -16,17 +16,17 @@ function Physic_Object:construct( args, world )
 end
 
 function Physic_Object:check_args( args )
-    if args.name then self.name = args.name else self.name = 'noname' end
-    if args.type then self.type = args.type else self.type = 'static' end
-    if args.visible then self.visible = args.visible else self.visible = true end
-    if args.fix_rotation then self.fix_rotation = args.fix_rotation else self.fix_rotation = true end
-    if args.restitution then self.restitution = args.restitution else self.restitution = 0.3 end
-    if args.friction then self.friction = args.friction else self.friction = 1 end
+    if not( args.name == nil ) then self.name = args.name else self.name = 'noname' end
+    if not( args.type == nil ) then self.type = args.type else self.type = 'static' end
+    if not( args.visible == nil ) then self.visible = args.visible else self.visible = true end
+    if not( args.fix_rotation == nil ) then self.fix_rotation = args.fix_rotation else self.fix_rotation = true end
+    if not( args.restitution == nil ) then self.restitution = args.restitution else self.restitution = 0.1 end
+    if not( args.friction == nil ) then self.friction = args.friction else self.friction = 1 end
 end
 
 function Physic_Object:set_box2d_objects( args, world )
 	self.body = love.physics.newBody( world, args.x, args.y, self.type )
-	self.shape = love.physics.newRectangleShape( args.w, args.h )
+	self.shape = love.physics.newRectangleShape( args.w - 1, args.h - 1 )
 
 	self.fixture = love.physics.newFixture( self.body, self.shape )
 	self.fixture:setRestitution( self.restitution )
@@ -63,19 +63,18 @@ end
 function Hero_Object:set_box2d_objects( args, world )
 
     self.body = love.physics.newBody( world, args.x, args.y, self.type )
-	self.shape = love.physics.newRectangleShape( args.w, args.h - 1 )
+	self.shape = love.physics.newRectangleShape( args.w, args.h - 2 )
 
 	self.fixture = love.physics.newFixture( self.body, self.shape )
 	self.fixture:setRestitution( 0 )
     self.fixture:setFriction( 0 )
     self.fixture:setUserData( self )
     self.body:setFixedRotation( self.fix_rotation )
-
    
     self.foot_shape = love.physics.newRectangleShape( 4-args.w / 2, args.h / 2, args.w - 6, 2, 0 )
 	self.foot_fixture = love.physics.newFixture( self.body, self.foot_shape )
 	self.foot_fixture:setRestitution( 0 )
-    self.foot_fixture:setFriction( 1 )
+    self.foot_fixture:setFriction( 0.9 )
     self.foot_fixture:setUserData( self )
 
 end
@@ -108,9 +107,9 @@ end
 function Hero_Object:handle( dt )
     local vx, vy = self.body:getLinearVelocity()
     if love.keyboard.isDown("right") then
-        self.body:setLinearVelocity( 50, vy )
+        self.body:setLinearVelocity( 60, vy )
     end
     if love.keyboard.isDown("left") then
-        self.body:setLinearVelocity( -50, vy )
+        self.body:setLinearVelocity( -60, vy )
     end
 end

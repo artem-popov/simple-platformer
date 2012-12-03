@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="15" height="10" tilewidth="16" tileheight="16">
+<map version="1.0" orientation="orthogonal" width="20" height="15" tilewidth="16" tileheight="16">
  <tileset firstgid="1" name="sprites-scetch" tilewidth="16" tileheight="16">
   <image source="../sprites/sprites-scetch.png" width="64" height="64"/>
   <tile id="0">
@@ -53,19 +53,19 @@
    </properties>
   </tile>
  </tileset>
- <layer name="background" width="15" height="10">
+ <layer name="background" width="20" height="15">
   <data encoding="base64" compression="zlib">
-   eJxjZmBgYKYDZqGTPQNl3yhGxQAYwgHF
+   eJxjZmBgYB5AzDLA9o/6ZXD4ixw7hmt4j2LcGABXzAOK
   </data>
  </layer>
- <layer name="ground" width="15" height="10">
+ <layer name="ground" width="20" height="15">
   <data encoding="base64" compression="zlib">
-   eJxjYBhcgJEAJqSXHDlq6MXlRlraS665uNSj+4FQXODDAB/0ACg=
+   eJxjYBgFIMAIxUPFXGoDWrmRkQAmVj8yH59actxHqhw+9+PzHy3dR0qYkmMXKWbQEgMAR6wAOg==
   </data>
  </layer>
- <layer name="objects" width="15" height="10">
+ <layer name="objects" width="20" height="15">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFgw1w4RBnJSA/mAAAE8QAGg==
+   eJxjYBi6gGugHTBMwXAN1+HiL1L8wUqGnsEMAG2wADg=
   </data>
  </layer>
 </map>

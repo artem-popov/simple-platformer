@@ -3,6 +3,7 @@ logger = require "modules/logger"
 local map_module = require "modules/map-loader-ext"
 local camera_module = require "modules/camera-ext"
 local physics = require "modules/physics"
+local game_status = require "modules/game-status"
 
 -- setup modules
 map_module.path = "levels/"
@@ -21,7 +22,9 @@ function game:init()
     hero = map_module.get_by_name( game_objects, "hero" )
     
     -- create camera ( zoom, speed, tsize, tw, th )
-	camera = camera_module( love.graphics.getHeight() / ( level.tileWidth * level.height ), 200, level.tileWidth, level.width, level.height )
+    -- local zoom = love.graphics.getHeight() / ( level.tileWidth * level.height )
+    local zoom = 4
+	camera = camera_module( zoom, 200, level.tileWidth, level.width, level.height )
 end
 
 function game:draw()
@@ -31,7 +34,7 @@ function game:draw()
     map_module.draw_objects( level, game_objects )
 
     camera.fn:detach()
-
+    game_status:show()
     logger.draw()
 end
 
