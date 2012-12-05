@@ -64,6 +64,19 @@ function physics:create_crate( x, y, w, h )
 	return object
 end
 
+function physics:create_bred( x, y, w, h )
+	local object = {}
+    setmetatable( object, { __index = Physic_Object } )
+    args = {}
+    args.name = 'bred'
+    args.type = 'dynamic'
+    args.x, args.y, args.w, args.h = x, y, w, h
+    
+    object:construct( args, self.world )
+
+	return object
+end
+
 function physics:create_gold( x, y, w, h )
 	local object = {}
     setmetatable( object, { __index = Physic_Object } )

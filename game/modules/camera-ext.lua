@@ -27,24 +27,16 @@ end
 
 function camera_ext:handle_camera( dt )
 	if love.keyboard.isDown("a") then
-        if self:is_out_screen( -self.speed * dt, 0 ) == false then
-			camera_ext.fn:move( -self.speed * dt, 0 )
-		end
+        self:move_please( -self.speed * dt, 0 )
     end
     if love.keyboard.isDown("d") then
-		if self:is_out_screen( self.speed * dt, 0 ) == false then
-			camera_ext.fn:move( self.speed * dt, 0 )
-		end
+        self:move_please( self.speed * dt, 0 )
     end
     if love.keyboard.isDown("w") then
-		if self:is_out_screen( 0, -self.speed * dt ) == false then
-			camera_ext.fn:move( 0, -self.speed * dt )
-		end
+        self:move_please( 0, -self.speed * dt )
     end
-	if love.keyboard.isDown("s") then
-		if self:is_out_screen( 0, self.speed * dt ) == false then
-			camera_ext.fn:move( 0, self.speed * dt )
-		end
+    if love.keyboard.isDown("s") then
+        self:move_please( 0, self.speed * dt )
     end
 end
 
@@ -54,6 +46,12 @@ function camera_ext:is_out_screen( mdx, mdy )
 		return true
 	end
 	return false
+end
+
+function camera_ext:move_please( dx, dy )
+    if self:is_out_screen( dx, dy ) == false then
+		camera_ext.fn:move( dx, dy )
+	end
 end
 
 -- the module

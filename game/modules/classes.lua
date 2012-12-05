@@ -53,7 +53,7 @@ end
 
 -- Hero_Object -- 
 
-Hero_Object = {}
+Hero_Object = { dir = 'right' }
 setmetatable( Hero_Object, { __index == Physic_Object } )
 
 function Hero_Object:check_args( args ) -- Physic_Object method
@@ -91,7 +91,6 @@ function Hero_Object:on_collide( object )
         object.destroyed = true
     elseif object.name == 'spike' then
         global.game_status.death = global.game_status.death + 1
-        self.body:applyForce( 0, -1500 )
     end
 end
 
@@ -104,20 +103,27 @@ function Hero_Object:set_tiles( tiles ) -- Physic_Object method
 end
 
 function Hero_Object:jump()
-    self.body:applyForce( 0, -1500 )
+    self.body:applyForce( 0, -1700 )
 end
 
-function Hero_Object:what_under_me( physics )
+function Hero_Object:what_under_me( )
     local x1, y1, x2, y2 = self.fixture:getBoundingBox()
-    physics.world:queryBoundingBox( x1 + 4, y2 - 1, x2 - 4, y2, hero_jump_if_can )
+    global.physics.world:queryBoundingBox( x1 + 4, y2 - 1, x2 - 4, y2, hero_jump_if_can )
 end
 
 function Hero_Object:handle( dt )
     local vx, vy = self.body:getLinearVelocity()
     if love.keyboard.isDown("right") then
         self.body:setLinearVelocity( 60, vy )
+        self.dir = 'right'
     end
     if love.keyboard.isDown("left") then
         self.body:setLinearVelocity( -60, vy )
+        self.dir = 'left'
     end
+end
+
+function Hero_Object:take_bred()
+    local x1, y1, x2, y2 = self.fixture:getBoundingBox()
+    physics.world:queryBoundingBox( x1 - 3, y2, x2 + 3, y2, hero_take_bred )
 end

@@ -14,12 +14,16 @@ function ml.get_objects( layer, physics )
             local object = physics:create_crate( x, y, w, h )
             object:set_tiles( { { id = tile.id, x = x, y = y } } )
             table.insert( objects, object )
+        elseif tile.properties.bred then
+            local object = physics:create_bred( x - 4, y, w/2, 5 )
+            object:set_tiles( { { id = tile.id, x = x - 4, y = y } } )
+            table.insert( objects, object )
         elseif tile.properties.gold then
             local object = physics:create_gold( x, y, w/2, h/2 )
             object:set_tiles( { { id = tile.id, x = x, y = y } } )
             table.insert( objects, object )
         elseif tile.properties.spike then
-            local object = physics:create_spike( x, y, w, h/2 )
+            local object = physics:create_spike( x, y + 6, w, 2 )
             object:set_tiles( { { id = tile.id, x = x - w/2, y = y } } )
             table.insert( objects, object )
         end
@@ -82,10 +86,18 @@ function ml.draw_objects( level, objects )
                 level.tiles[tile.id]:draw( tile.x , tile.y )
             end
         else
-            if not( object.destroyed ) then 
+            if not( object.destroyed ) then
                 local x, y = object:get_xy()
-                for t, tile in pairs( object.tiles ) do
-                    level.tiles[tile.id]:draw( x , y )
+                if object.name == 'hero' then
+                    if object.dir == 'right' then
+                        level.tiles[5]:draw( x , y )
+                    else 
+                        level.tiles[6]:draw( x , y )
+                    end
+                else
+                    for t, tile in pairs( object.tiles ) do
+                        level.tiles[tile.id]:draw( x , y )
+                    end
                 end
             end
         end
